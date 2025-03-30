@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_train_app/app/constants/app_strings.dart';
 import 'package:flutter_train_app/app/constants/app_styles.dart';
@@ -11,7 +10,11 @@ class SeatPage extends StatefulWidget {
   final String departureStation;
   final String arrivalStation;
 
-  const SeatPage(this.departureStation, this.arrivalStation, {super.key});
+  const SeatPage({
+    required this.departureStation,
+    required this.arrivalStation,
+    super.key,
+  });
 
   @override
   State<SeatPage> createState() => _SeatPageState();
@@ -71,7 +74,7 @@ class _SeatPageState extends State<SeatPage> {
                 buildSeatBox(
                   selected: false,
                   dimension: AppStyles.smallSeatBoxDimension,
-                    context: context,
+                  context: context,
                 ),
                 SizedBox(width: 4),
                 Text(AppStrings.selected),

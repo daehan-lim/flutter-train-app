@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_train_app/app/constants/app_strings.dart';
 import 'package:flutter_train_app/app/constants/app_styles.dart';
@@ -73,8 +72,10 @@ class _HomePageState extends State<HomePage> {
                     context,
                     MaterialPageRoute(
                       builder:
-                          (context) =>
-                              SeatPage(_departureStation!, _arrivalStation!),
+                          (context) => SeatPage(
+                            departureStation: _departureStation!,
+                            arrivalStation: _arrivalStation!,
+                          ),
                     ),
                   );
                   if (bookSuccessful == true) {
