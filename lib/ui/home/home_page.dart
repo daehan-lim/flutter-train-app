@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_train_app/app/app_theme.dart';
 import 'package:flutter_train_app/app/constants/app_strings.dart';
@@ -7,8 +8,24 @@ import 'package:flutter_train_app/ui/station_list/station_list_page.dart';
 
 import '../../app/constants/app_colors.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({super.key});
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  String? _arrivalStation;
+  String? _departureStation;
+
+  void updateArrivalStation(String station) {
+    _arrivalStation = station;
+  }
+
+  void updateDepartureStation(String station) {
+    _departureStation = station;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +50,10 @@ class HomePage extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  StationSelectTexts(AppStrings.departureStation),
+                  StationSelectTexts(
+                    AppStrings.departureStation,
+                    updateDepartureStation,
+                  ),
                   SizedBox(
                     height: 50,
                     child: VerticalDivider(
@@ -41,7 +61,10 @@ class HomePage extends StatelessWidget {
                       color: Theme.of(context).dividerColor,
                     ),
                   ),
-                  StationSelectTexts(AppStrings.arrivalStation),
+                  StationSelectTexts(
+                    AppStrings.arrivalStation,
+                    updateArrivalStation,
+                  ),
                 ],
               ),
             ),
