@@ -20,7 +20,7 @@ class SeatPage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               Text(departureStation, style: AppStyles.arrivalDepartureTextSeat),
-              Icon(Icons.arrow_circle_right_outlined, size: 30,),
+              Icon(Icons.arrow_circle_right_outlined, size: 30),
               Text(arrivalStation, style: AppStyles.arrivalDepartureTextSeat),
             ],
           ),
@@ -28,16 +28,22 @@ class SeatPage extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              _buildSeatBox(selected: true, dimension: AppStyles.smallSeatBoxDimension),
+              _buildSeatBox(
+                selected: true,
+                dimension: AppStyles.smallSeatBoxDimension,
+              ),
               SizedBox(width: 4),
               Text(AppStrings.selected),
               SizedBox(width: 20),
-              _buildSeatBox(selected: false, dimension: AppStyles.smallSeatBoxDimension),
+              _buildSeatBox(
+                selected: false,
+                dimension: AppStyles.smallSeatBoxDimension,
+              ),
               SizedBox(width: 4),
-              Text(AppStrings.selected)
+              Text(AppStrings.selected),
             ],
           ),
-          SizedBox(height: 23),
+          SizedBox(height: 15),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -51,30 +57,64 @@ class SeatPage extends StatelessWidget {
               SizedBox(width: 4),
               _buildAlphaNumBox('D'),
             ],
-          )
+          ),
+          Flexible(
+            child: ListView(
+              children: [
+                for (var i = 1; i <= 20; i++) ...[
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      _buildSeatBox(
+                        selected: false,
+                        dimension: AppStyles.bigSeatBoxDimension,
+                      ),
+                      SizedBox(width: 4),
+                      _buildSeatBox(
+                        selected: false,
+                        dimension: AppStyles.bigSeatBoxDimension,
+                      ),
+                      SizedBox(width: 4),
+                      _buildAlphaNumBox(i.toString()),
+                      SizedBox(width: 4),
+                      _buildSeatBox(
+                        selected: false,
+                        dimension: AppStyles.bigSeatBoxDimension,
+                      ),
+                      SizedBox(width: 4),
+                      _buildSeatBox(
+                        selected: false,
+                        dimension: AppStyles.bigSeatBoxDimension,
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: 8)
+                ],
+              ],
+            ),
+          ),
         ],
       ),
     );
   }
-  
+
   Widget _buildSeatBox({required bool selected, required double dimension}) {
     return Container(
       width: dimension,
       height: dimension,
       decoration: BoxDecoration(
-          color: selected? Colors.purple : Colors.grey[300],
-          borderRadius: BorderRadius.circular(8)
+        color: selected ? Colors.purple : Colors.grey[300],
+        borderRadius: BorderRadius.circular(8),
       ),
     );
   }
 
   Widget _buildAlphaNumBox(String label) {
     return Container(
+      alignment: Alignment.center,
       width: AppStyles.bigSeatBoxDimension,
       height: AppStyles.bigSeatBoxDimension,
-      decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(8)
-      ),
+      decoration: BoxDecoration(borderRadius: BorderRadius.circular(8)),
       child: Text(label, style: TextStyle(fontSize: 18)),
     );
   }
