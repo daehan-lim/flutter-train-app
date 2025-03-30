@@ -11,6 +11,8 @@ class AppStrings {
   static const cancel = '취소';
   static const selected = '선택됨';
   static const book = '예매 하기';
+  static const confirmBook = '예매 하시겠습니까?';
+  static const seatNumber = '좌석: %d-%s';
 
   static const stationNames = [
     '수서',

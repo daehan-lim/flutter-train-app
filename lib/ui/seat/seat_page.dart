@@ -1,8 +1,11 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_train_app/app/constants/app_strings.dart';
 import 'package:flutter_train_app/app/constants/app_styles.dart';
 import 'package:flutter_train_app/ui/seat/widgets/seat_boxes.dart';
 import 'package:flutter_train_app/ui/seat/widgets/seat_list.dart';
+
+import '../../util/util.dart';
 
 class SeatPage extends StatefulWidget {
   final String departureStation;
@@ -47,7 +50,10 @@ class _SeatPageState extends State<SeatPage> {
                   style: AppStyles.arrivalDepartureTextSeat,
                 ),
                 Icon(Icons.arrow_circle_right_outlined, size: 30),
-                Text(widget.arrivalStation, style: AppStyles.arrivalDepartureTextSeat),
+                Text(
+                  widget.arrivalStation,
+                  style: AppStyles.arrivalDepartureTextSeat,
+                ),
               ],
             ),
             SizedBox(height: 12),
@@ -69,9 +75,31 @@ class _SeatPageState extends State<SeatPage> {
                 Text(AppStrings.selected),
               ],
             ),
-            SeatList(selectedRow: selectedRow, selectedCol: selectedCol, onSeatSelected: onSeatSelected),
+            SeatList(
+              selectedRow: selectedRow,
+              selectedCol: selectedCol,
+              onSeatSelected: onSeatSelected,
+            ),
             ElevatedButton(
-              onPressed: () {},
+              onPressed: () async {
+                if (selectedRow != null) {
+                  // when row is null, column is also null
+                  final String? result = await showAppCupertinoDialog(
+                    context: context,
+                    title: AppStrings.confirmBook,
+                    content: AppStrings.seatNumber
+                        .replaceAll('%d', '$selectedRow')
+                        .replaceAll(
+                          '%s',
+                          AppStrings.colLetters[selectedCol! - 1],
+                        ),
+                    showCancel: true,
+                  );
+                  if (result == AppStrings.confirm) {
+                    Navigator.pop(context);
+                  }
+                }
+              },
               child: Text(AppStrings.book, style: AppStyles.buttonText),
             ),
             SizedBox(height: 40),
