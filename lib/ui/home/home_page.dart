@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_train_app/app/app_theme.dart';
 import 'package:flutter_train_app/app/constants/app_strings.dart';
 import 'package:flutter_train_app/app/constants/app_styles.dart';
 import 'package:flutter_train_app/ui/home/widgets/station_select_texts.dart';
@@ -31,10 +30,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor:
-          AppTheme.isDark(context)
-              ? AppColors.darkBackground
-              : AppColors.greyBackground,
+      backgroundColor: AppColors.getScaffoldBackgroundHome(context),
       appBar: AppBar(title: Text(AppStrings.trainReservation)),
       body: Padding(
         padding: const EdgeInsets.all(20),
@@ -71,9 +67,9 @@ class _HomePageState extends State<HomePage> {
             ),
             SizedBox(height: 20),
             ElevatedButton(
-              onPressed: () {
+              onPressed: () async {
                 if (_departureStation != null && _arrivalStation != null) {
-                  Navigator.push(
+                  bool? bookSuccessful = await Navigator.push(
                     context,
                     MaterialPageRoute(
                       builder:
@@ -81,6 +77,21 @@ class _HomePageState extends State<HomePage> {
                               SeatPage(_departureStation!, _arrivalStation!),
                     ),
                   );
+                  if (bookSuccessful == true) {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        content: Text(
+                          AppStrings.seatBookSuccess,
+                          style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        behavior: SnackBarBehavior.floating,
+                        duration: Duration(seconds: 4),
+                      ),
+                    );
+                  }
                 } else {
                   showAppCupertinoDialog(
                     context: context,

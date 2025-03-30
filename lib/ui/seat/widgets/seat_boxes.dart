@@ -1,13 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_train_app/app/constants/app_colors.dart';
 
 import '../../../app/constants/app_styles.dart';
 
-Widget buildSeatBox({required bool selected, required double dimension}) {
+Widget buildSeatBox({
+  required bool selected,
+  required double dimension,
+  required BuildContext context,
+}) {
   return Container(
     width: dimension,
     height: dimension,
     decoration: BoxDecoration(
-      color: selected ? Colors.purple : Colors.grey[300],
+      color: selected ? Colors.purple : AppColors.getSeatBoxUnselected(context),
       borderRadius: BorderRadius.circular(8),
     ),
   );

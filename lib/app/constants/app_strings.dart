@@ -13,6 +13,7 @@ class AppStrings {
   static const book = '예매 하기';
   static const confirmBook = '예매 하시겠습니까?';
   static const seatNumber = '좌석: %d-%s';
+  static const seatBookSuccess = '좌석이 성공적으로 예약되었습니다.';
 
   static const stationNames = [
     '수서',
@@ -28,6 +29,5 @@ class AppStrings {
     '부산',
   ];
   static const colLetters = ['A', 'B', 'C', 'D'];
-
 
 }

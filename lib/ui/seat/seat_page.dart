@@ -63,6 +63,7 @@ class _SeatPageState extends State<SeatPage> {
                 buildSeatBox(
                   selected: true,
                   dimension: AppStyles.smallSeatBoxDimension,
+                  context: context,
                 ),
                 SizedBox(width: 4),
                 Text(AppStrings.selected),
@@ -70,6 +71,7 @@ class _SeatPageState extends State<SeatPage> {
                 buildSeatBox(
                   selected: false,
                   dimension: AppStyles.smallSeatBoxDimension,
+                    context: context,
                 ),
                 SizedBox(width: 4),
                 Text(AppStrings.selected),
@@ -96,7 +98,7 @@ class _SeatPageState extends State<SeatPage> {
                     showCancel: true,
                   );
                   if (result == AppStrings.confirm) {
-                    Navigator.pop(context);
+                    Navigator.pop(context, true);
                   }
                 }
               },

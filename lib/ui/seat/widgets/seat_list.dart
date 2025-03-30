@@ -40,15 +40,15 @@ class SeatList extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  getSeatBox(i, 1),
+                  getSeatBox(row: i, col: 1, context: context),
                   SizedBox(width: 4),
-                  getSeatBox(i, 2),
+                  getSeatBox(row: i, col: 2, context: context),
                   SizedBox(width: 4),
                   buildAlphaNumBox(i.toString()),
                   SizedBox(width: 4),
-                  getSeatBox(i, 3),
+                  getSeatBox(row: i, col: 3, context: context),
                   SizedBox(width: 4),
-                  getSeatBox(i, 4),
+                  getSeatBox(row: i, col: 4, context: context),
                 ],
               ),
               SizedBox(height: 8),
@@ -59,13 +59,14 @@ class SeatList extends StatelessWidget {
     );
   }
 
-  Widget getSeatBox(int row, int col) {
+  Widget getSeatBox({required int row, required int col, required BuildContext context}) {
     bool selected = row == selectedRow && col == selectedCol;
     return GestureDetector(
       onTap: () => onSeatSelected(row, col),
       child: buildSeatBox(
         selected: selected,
         dimension: AppStyles.bigSeatBoxDimension,
+        context: context
       ),
     );
   }
