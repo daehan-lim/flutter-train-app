@@ -1,12 +1,34 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_train_app/app/constants/app_strings.dart';
 import 'package:flutter_train_app/app/constants/app_styles.dart';
+import 'package:flutter_train_app/ui/seat/widgets/seat_boxes.dart';
+import 'package:flutter_train_app/ui/seat/widgets/seat_list.dart';
 
-class SeatPage extends StatelessWidget {
+class SeatPage extends StatefulWidget {
   final String departureStation;
   final String arrivalStation;
 
   const SeatPage(this.departureStation, this.arrivalStation, {super.key});
+
+  @override
+  State<SeatPage> createState() => _SeatPageState();
+}
+
+class _SeatPageState extends State<SeatPage> {
+  int? selectedRow;
+  int? selectedCol;
+
+  void onSeatSelected(int newRow, int newCol) {
+    setState(() {
+      if (selectedRow == newRow && selectedCol == newCol) {
+        selectedRow = null;
+        selectedCol = null;
+      } else {
+        selectedRow = newRow;
+        selectedCol = newCol;
+      }
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -21,25 +43,25 @@ class SeatPage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 Text(
-                  departureStation,
+                  widget.departureStation,
                   style: AppStyles.arrivalDepartureTextSeat,
                 ),
                 Icon(Icons.arrow_circle_right_outlined, size: 30),
-                Text(arrivalStation, style: AppStyles.arrivalDepartureTextSeat),
+                Text(widget.arrivalStation, style: AppStyles.arrivalDepartureTextSeat),
               ],
             ),
             SizedBox(height: 12),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                _buildSeatBox(
+                buildSeatBox(
                   selected: true,
                   dimension: AppStyles.smallSeatBoxDimension,
                 ),
                 SizedBox(width: 4),
                 Text(AppStrings.selected),
                 SizedBox(width: 20),
-                _buildSeatBox(
+                buildSeatBox(
                   selected: false,
                   dimension: AppStyles.smallSeatBoxDimension,
                 ),
@@ -47,58 +69,7 @@ class SeatPage extends StatelessWidget {
                 Text(AppStrings.selected),
               ],
             ),
-            Flexible(
-              child: Padding(
-                padding: const EdgeInsets.only(top: 20),
-                child: ListView(
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        _buildAlphaNumBox('A'),
-                        SizedBox(width: 4),
-                        _buildAlphaNumBox('B'),
-                        SizedBox(width: 4),
-                        _buildAlphaNumBox(''),
-                        SizedBox(width: 4),
-                        _buildAlphaNumBox('C'),
-                        SizedBox(width: 4),
-                        _buildAlphaNumBox('D'),
-                      ],
-                    ),
-                    for (var i = 1; i <= 20; i++) ...[
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          _buildSeatBox(
-                            selected: false,
-                            dimension: AppStyles.bigSeatBoxDimension,
-                          ),
-                          SizedBox(width: 4),
-                          _buildSeatBox(
-                            selected: false,
-                            dimension: AppStyles.bigSeatBoxDimension,
-                          ),
-                          SizedBox(width: 4),
-                          _buildAlphaNumBox(i.toString()),
-                          SizedBox(width: 4),
-                          _buildSeatBox(
-                            selected: false,
-                            dimension: AppStyles.bigSeatBoxDimension,
-                          ),
-                          SizedBox(width: 4),
-                          _buildSeatBox(
-                            selected: false,
-                            dimension: AppStyles.bigSeatBoxDimension,
-                          ),
-                        ],
-                      ),
-                      SizedBox(height: 8),
-                    ],
-                  ],
-                ),
-              ),
-            ),
+            SeatList(selectedRow: selectedRow, selectedCol: selectedCol, onSeatSelected: onSeatSelected),
             ElevatedButton(
               onPressed: () {},
               child: Text(AppStrings.book, style: AppStyles.buttonText),
@@ -107,27 +78,6 @@ class SeatPage extends StatelessWidget {
           ],
         ),
       ),
-    );
-  }
-
-  Widget _buildSeatBox({required bool selected, required double dimension}) {
-    return Container(
-      width: dimension,
-      height: dimension,
-      decoration: BoxDecoration(
-        color: selected ? Colors.purple : Colors.grey[300],
-        borderRadius: BorderRadius.circular(8),
-      ),
-    );
-  }
-
-  Widget _buildAlphaNumBox(String label) {
-    return Container(
-      alignment: Alignment.center,
-      width: AppStyles.bigSeatBoxDimension,
-      height: AppStyles.bigSeatBoxDimension,
-      decoration: BoxDecoration(borderRadius: BorderRadius.circular(8)),
-      child: Text(label, style: TextStyle(fontSize: 18)),
     );
   }
 }
