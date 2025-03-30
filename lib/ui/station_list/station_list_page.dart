@@ -5,14 +5,15 @@ import 'package:flutter_train_app/app/constants/app_styles.dart';
 import '../../app/constants/app_colors.dart';
 
 class StationListPage extends StatelessWidget {
+  final String pageTitle;
   List<String> stationNames = AppStrings.stationNames;
 
-  StationListPage({super.key});
+  StationListPage(this.pageTitle, {super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text(AppStrings.departureStation)),
+      appBar: AppBar(title: Text(pageTitle)),
       body: ListView.builder(
         itemCount: stationNames.length,
         itemBuilder: (context, index) {
