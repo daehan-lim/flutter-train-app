@@ -17,15 +17,18 @@ class StationListPage extends StatelessWidget {
       body: ListView.builder(
         itemCount: stationNames.length,
         itemBuilder: (context, index) {
-          return Container(
-            height: 50,
-            alignment: Alignment.centerLeft,
-            decoration: BoxDecoration(
-              border: Border(bottom: BorderSide(color: AppColors.listDivider)),
-            ),
-            child: Padding(
-              padding: const EdgeInsets.only(left: 18),
-              child: Text(stationNames[index], style: AppStyles.trainStationName),
+          return GestureDetector(
+            onTap: () => Navigator.pop(context, stationNames[index]),
+            child: Container(
+              height: 50,
+              alignment: Alignment.centerLeft,
+              decoration: BoxDecoration(
+                border: Border(bottom: BorderSide(color: AppColors.listDivider)),
+              ),
+              child: Padding(
+                padding: const EdgeInsets.only(left: 18),
+                child: Text(stationNames[index], style: AppStyles.trainStationName),
+              ),
             ),
           );
         },
