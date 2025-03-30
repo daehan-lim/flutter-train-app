@@ -14,6 +14,11 @@ class AppStyles {
     color: Colors.white
   );
 
+  static const trainStationName = TextStyle(
+      fontSize: 18,
+      fontWeight: FontWeight.bold,
+  );
+
   static getSelectedStationText(BuildContext context) {
     return TextStyle(
       fontSize: 40,

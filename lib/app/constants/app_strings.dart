@@ -5,4 +5,17 @@ class AppStrings {
   static const arrivalStation = '도착역';
   static const select = '선택';
   static const selectSeat = '좌석 선택';
+  static const stationNames = [
+    '수서',
+    '동탄',
+    '평택지제',
+    '천안아산',
+    '오송',
+    '대전',
+    '김천구미',
+    '동대구',
+    '경주',
+    '울산',
+    '부산',
+  ];
 }
