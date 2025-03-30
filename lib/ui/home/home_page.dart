@@ -5,6 +5,7 @@ import 'package:flutter_train_app/app/constants/app_strings.dart';
 import 'package:flutter_train_app/app/constants/app_styles.dart';
 import 'package:flutter_train_app/ui/home/widgets/station_select_texts.dart';
 import 'package:flutter_train_app/ui/seat/seat_page.dart';
+import 'package:flutter_train_app/util/util.dart';
 
 import '../../app/constants/app_colors.dart';
 
@@ -81,30 +82,14 @@ class _HomePageState extends State<HomePage> {
                     ),
                   );
                 } else {
-                  showCupertinoDialog(
+                  showAppCupertinoDialog(
                     context: context,
-                    builder: (context) {
-                      return CupertinoAlertDialog(
-                        title: Text(AppStrings.notice, style: TextStyle(fontSize: 20)),
-                        content: Text(AppStrings.selectDepartureArrivalMessage, style: TextStyle(fontSize: 15)),
-                        actions: [
-                          CupertinoDialogAction(
-                            onPressed: () => Navigator.pop(context),
-                            child: Text(
-                              AppStrings.confirm,
-                              style: TextStyle(color: Colors.blue, fontSize: 17),
-                            ),
-                          ),
-                        ],
-                      );
-                    },
+                    title: AppStrings.notice,
+                    content: AppStrings.selectDepartureArrivalMessage,
                   );
                 }
               },
-              child: Text(
-                AppStrings.selectSeat,
-                style: AppStyles.buttonText,
-              ),
+              child: Text(AppStrings.selectSeat, style: AppStyles.buttonText),
             ),
           ],
         ),
