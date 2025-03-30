@@ -255,4 +255,3 @@ app.*.map.json
 /android/app/release
 
 .metadata
-.packages
