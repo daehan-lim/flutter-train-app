@@ -6,12 +6,21 @@ import '../../app/constants/app_colors.dart';
 
 class StationListPage extends StatelessWidget {
   final String pageTitle;
-  List<String> stationNames = AppStrings.stationNames;
+  final String? otherStation;
+  final List<String> stationNames = List.from(AppStrings.stationNames);
 
-  StationListPage(this.pageTitle, {super.key});
+  StationListPage({
+    required this.pageTitle,
+    required this.otherStation,
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
+    if (otherStation != null) {
+      stationNames.remove(otherStation);
+    }
+
     return Scaffold(
       appBar: AppBar(title: Text(pageTitle)),
       body: ListView.builder(
@@ -23,11 +32,16 @@ class StationListPage extends StatelessWidget {
               height: 50,
               alignment: Alignment.centerLeft,
               decoration: BoxDecoration(
-                border: Border(bottom: BorderSide(color: AppColors.listDivider)),
+                border: Border(
+                  bottom: BorderSide(color: AppColors.listDivider),
+                ),
               ),
               child: Padding(
                 padding: const EdgeInsets.only(left: 18),
-                child: Text(stationNames[index], style: AppStyles.trainStationName),
+                child: Text(
+                  stationNames[index],
+                  style: AppStyles.trainStationName,
+                ),
               ),
             ),
           );

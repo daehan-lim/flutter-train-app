@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_train_app/app/constants/app_strings.dart';
 import 'package:flutter_train_app/app/constants/app_styles.dart';
-import 'package:flutter_train_app/ui/home/widgets/station_select_texts.dart';
+import 'package:flutter_train_app/ui/station_list/station_list_page.dart';
 import 'package:flutter_train_app/ui/seat/seat_page.dart';
 import 'package:flutter_train_app/util/util.dart';
 
@@ -18,12 +18,51 @@ class _HomePageState extends State<HomePage> {
   String? _arrivalStation;
   String? _departureStation;
 
-  void updateArrivalStation(String station) {
-    _arrivalStation = station;
+  void _selectStation({required bool isDeparture}) async {
+    final String title =
+        isDeparture ? AppStrings.departureStation : AppStrings.arrivalStation;
+    final String? otherStation =
+        isDeparture ? _arrivalStation : _departureStation;
+
+    final String? selectedStation = await Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder:
+            (context) =>
+                StationListPage(pageTitle: title, otherStation: otherStation),
+      ),
+    );
+
+    if (selectedStation != null) {
+      setState(() {
+        if (isDeparture) {
+          _departureStation = selectedStation;
+        } else {
+          _arrivalStation = selectedStation;
+        }
+      });
+    }
   }
 
-  void updateDepartureStation(String station) {
-    _departureStation = station;
+  Widget _buildStationSelector({required bool isDeparture}) {
+    final String title =
+        isDeparture ? AppStrings.departureStation : AppStrings.arrivalStation;
+    final String? selectedStation =
+        isDeparture ? _departureStation : _arrivalStation;
+
+    return GestureDetector(
+      onTap: () => _selectStation(isDeparture: isDeparture),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text(title, style: AppStyles.arrivalDepartureText),
+          Text(
+            selectedStation ?? AppStrings.select,
+            style: AppStyles.getSelectedStationText(context),
+          ),
+        ],
+      ),
+    );
   }
 
   @override
@@ -46,10 +85,7 @@ class _HomePageState extends State<HomePage> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  StationSelectTexts(
-                    AppStrings.departureStation,
-                    updateDepartureStation,
-                  ),
+                  _buildStationSelector(isDeparture: true), // departure
                   SizedBox(
                     height: 50,
                     child: VerticalDivider(
@@ -57,10 +93,7 @@ class _HomePageState extends State<HomePage> {
                       color: Theme.of(context).dividerColor,
                     ),
                   ),
-                  StationSelectTexts(
-                    AppStrings.arrivalStation,
-                    updateArrivalStation,
-                  ),
+                  _buildStationSelector(isDeparture: false), // arrival
                 ],
               ),
             ),
