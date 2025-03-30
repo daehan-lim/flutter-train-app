@@ -1,5 +1,5 @@
 class AppStrings {
-  static const homeTitle = '기차 예매';
+  static const trainReservation = '기차 예매';
 
   static const departureStation = '출발역';
   static const arrivalStation = '도착역';

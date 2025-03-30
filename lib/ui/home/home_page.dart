@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_train_app/app/app_theme.dart';
 import 'package:flutter_train_app/app/constants/app_strings.dart';
-import 'package:flutter_train_app/app/constants/styles.dart';
+import 'package:flutter_train_app/app/constants/app_styles.dart';
+import 'package:flutter_train_app/ui/home/widgets/station_select_texts.dart';
 
 import '../../app/constants/app_colors.dart';
 
@@ -15,7 +16,7 @@ class HomePage extends StatelessWidget {
           AppTheme.isDark(context)
               ? AppColors.darkBackground
               : AppColors.greyBackground,
-      appBar: AppBar(title: Text(AppStrings.homeTitle)),
+      appBar: AppBar(title: Text(AppStrings.trainReservation)),
       body: Padding(
         padding: const EdgeInsets.all(20),
         child: Column(
@@ -46,28 +47,14 @@ class HomePage extends StatelessWidget {
             SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {},
-              child: Text(AppStrings.selectSeat, style: AppStyles.seatSelectButtonText,),
+              child: Text(
+                AppStrings.selectSeat,
+                style: AppStyles.seatSelectButtonText,
+              ),
             ),
           ],
         ),
       ),
-    );
-  }
-}
-
-class StationSelectTexts extends StatelessWidget {
-  final String departureArrival;
-
-  const StationSelectTexts(this.departureArrival, {super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Text(departureArrival, style: AppStyles.arrivalDepartureText),
-        Text(AppStrings.select, style: AppStyles.getSelectedStationText(context)),
-      ],
     );
   }
 }
