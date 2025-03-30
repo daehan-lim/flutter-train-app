@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_train_app/app/constants/app_strings.dart';
 import 'package:flutter_train_app/app/constants/app_styles.dart';
 
-
 class SeatPage extends StatelessWidget {
   final String departureStation;
   final String arrivalStation;
@@ -13,86 +12,100 @@ class SeatPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text(AppStrings.selectSeat)),
-      body: Column(
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              Text(departureStation, style: AppStyles.arrivalDepartureTextSeat),
-              Icon(Icons.arrow_circle_right_outlined, size: 30),
-              Text(arrivalStation, style: AppStyles.arrivalDepartureTextSeat),
-            ],
-          ),
-          SizedBox(height: 12),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              _buildSeatBox(
-                selected: true,
-                dimension: AppStyles.smallSeatBoxDimension,
-              ),
-              SizedBox(width: 4),
-              Text(AppStrings.selected),
-              SizedBox(width: 20),
-              _buildSeatBox(
-                selected: false,
-                dimension: AppStyles.smallSeatBoxDimension,
-              ),
-              SizedBox(width: 4),
-              Text(AppStrings.selected),
-            ],
-          ),
-          SizedBox(height: 15),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              _buildAlphaNumBox('A'),
-              SizedBox(width: 4),
-              _buildAlphaNumBox('B'),
-              SizedBox(width: 4),
-              _buildAlphaNumBox(''),
-              SizedBox(width: 4),
-              _buildAlphaNumBox('C'),
-              SizedBox(width: 4),
-              _buildAlphaNumBox('D'),
-            ],
-          ),
-          Flexible(
-            child: ListView(
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 20),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                for (var i = 1; i <= 20; i++) ...[
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      _buildSeatBox(
-                        selected: false,
-                        dimension: AppStyles.bigSeatBoxDimension,
-                      ),
-                      SizedBox(width: 4),
-                      _buildSeatBox(
-                        selected: false,
-                        dimension: AppStyles.bigSeatBoxDimension,
-                      ),
-                      SizedBox(width: 4),
-                      _buildAlphaNumBox(i.toString()),
-                      SizedBox(width: 4),
-                      _buildSeatBox(
-                        selected: false,
-                        dimension: AppStyles.bigSeatBoxDimension,
-                      ),
-                      SizedBox(width: 4),
-                      _buildSeatBox(
-                        selected: false,
-                        dimension: AppStyles.bigSeatBoxDimension,
-                      ),
-                    ],
-                  ),
-                  SizedBox(height: 8)
-                ],
+                Text(
+                  departureStation,
+                  style: AppStyles.arrivalDepartureTextSeat,
+                ),
+                Icon(Icons.arrow_circle_right_outlined, size: 30),
+                Text(arrivalStation, style: AppStyles.arrivalDepartureTextSeat),
               ],
             ),
-          ),
-        ],
+            SizedBox(height: 12),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                _buildSeatBox(
+                  selected: true,
+                  dimension: AppStyles.smallSeatBoxDimension,
+                ),
+                SizedBox(width: 4),
+                Text(AppStrings.selected),
+                SizedBox(width: 20),
+                _buildSeatBox(
+                  selected: false,
+                  dimension: AppStyles.smallSeatBoxDimension,
+                ),
+                SizedBox(width: 4),
+                Text(AppStrings.selected),
+              ],
+            ),
+            Flexible(
+              child: Padding(
+                padding: const EdgeInsets.only(top: 20),
+                child: ListView(
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        _buildAlphaNumBox('A'),
+                        SizedBox(width: 4),
+                        _buildAlphaNumBox('B'),
+                        SizedBox(width: 4),
+                        _buildAlphaNumBox(''),
+                        SizedBox(width: 4),
+                        _buildAlphaNumBox('C'),
+                        SizedBox(width: 4),
+                        _buildAlphaNumBox('D'),
+                      ],
+                    ),
+                    for (var i = 1; i <= 20; i++) ...[
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          _buildSeatBox(
+                            selected: false,
+                            dimension: AppStyles.bigSeatBoxDimension,
+                          ),
+                          SizedBox(width: 4),
+                          _buildSeatBox(
+                            selected: false,
+                            dimension: AppStyles.bigSeatBoxDimension,
+                          ),
+                          SizedBox(width: 4),
+                          _buildAlphaNumBox(i.toString()),
+                          SizedBox(width: 4),
+                          _buildSeatBox(
+                            selected: false,
+                            dimension: AppStyles.bigSeatBoxDimension,
+                          ),
+                          SizedBox(width: 4),
+                          _buildSeatBox(
+                            selected: false,
+                            dimension: AppStyles.bigSeatBoxDimension,
+                          ),
+                        ],
+                      ),
+                      SizedBox(height: 8),
+                    ],
+                  ],
+                ),
+              ),
+            ),
+            ElevatedButton(
+              onPressed: () {},
+              child: Text(AppStrings.book, style: AppStyles.buttonText),
+            ),
+            SizedBox(height: 40),
+          ],
+        ),
       ),
     );
   }

@@ -8,7 +8,7 @@ class AppStyles {
     fontWeight: FontWeight.bold,
   );
 
-  static const seatSelectButtonText = TextStyle(
+  static const buttonText = TextStyle(
     fontSize: 18,
     fontWeight: FontWeight.bold,
     color: Colors.white

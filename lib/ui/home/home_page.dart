@@ -103,7 +103,7 @@ class _HomePageState extends State<HomePage> {
               },
               child: Text(
                 AppStrings.selectSeat,
-                style: AppStyles.seatSelectButtonText,
+                style: AppStyles.buttonText,
               ),
             ),
           ],
