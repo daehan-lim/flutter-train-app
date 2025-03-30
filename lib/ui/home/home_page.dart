@@ -5,7 +5,6 @@ import 'package:flutter_train_app/app/constants/app_strings.dart';
 import 'package:flutter_train_app/app/constants/app_styles.dart';
 import 'package:flutter_train_app/ui/home/widgets/station_select_texts.dart';
 import 'package:flutter_train_app/ui/seat/seat_page.dart';
-import 'package:flutter_train_app/ui/station_list/station_list_page.dart';
 
 import '../../app/constants/app_colors.dart';
 

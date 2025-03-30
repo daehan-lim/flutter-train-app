@@ -6,9 +6,9 @@ import '../../station_list/station_list_page.dart';
 
 class StationSelectTexts extends StatefulWidget {
   final String departureArrival;
-  ValueChanged<String> onStationSelected;
+  final ValueChanged<String> onStationSelected;
 
-  StationSelectTexts(this.departureArrival, this.onStationSelected, {super.key});
+  const StationSelectTexts(this.departureArrival, this.onStationSelected, {super.key});
 
   @override
   State<StationSelectTexts> createState() => _StationSelectTextsState();

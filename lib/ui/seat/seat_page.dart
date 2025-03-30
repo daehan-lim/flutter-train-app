@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_train_app/app/constants/app_strings.dart';
 import 'package:flutter_train_app/app/constants/app_styles.dart';
 
-import '../../app/constants/app_colors.dart';
 
 class SeatPage extends StatelessWidget {
   final String departureStation;
