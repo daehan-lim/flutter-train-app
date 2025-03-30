@@ -19,6 +19,15 @@ class AppStyles {
       fontWeight: FontWeight.bold,
   );
 
+  static const arrivalDepartureTextSeat = TextStyle(
+    fontSize: 30,
+    color: Colors.purple,
+    fontWeight: FontWeight.bold,
+  );
+
+  static const double smallSeatBoxDimension = 24;
+  static const double bigSeatBoxDimension = 50;
+
   static getSelectedStationText(BuildContext context) {
     return TextStyle(
       fontSize: 40,
