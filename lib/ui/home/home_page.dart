@@ -70,7 +70,37 @@ class _HomePageState extends State<HomePage> {
             ),
             SizedBox(height: 20),
             ElevatedButton(
-              onPressed: () {},
+              onPressed: () {
+                if (_departureStation != null && _arrivalStation != null) {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder:
+                          (context) =>
+                              StationListPage(AppStrings.arrivalStation),
+                    ),
+                  );
+                } else {
+                  showCupertinoDialog(
+                    context: context,
+                    builder: (context) {
+                      return CupertinoAlertDialog(
+                        title: Text(AppStrings.notice, style: TextStyle(fontSize: 20)),
+                        content: Text(AppStrings.selectDepartureArrivalMessage, style: TextStyle(fontSize: 15)),
+                        actions: [
+                          CupertinoDialogAction(
+                            onPressed: () => Navigator.pop(context),
+                            child: Text(
+                              AppStrings.confirm,
+                              style: TextStyle(color: Colors.blue, fontSize: 17),
+                            ),
+                          ),
+                        ],
+                      );
+                    },
+                  );
+                }
+              },
               child: Text(
                 AppStrings.selectSeat,
                 style: AppStyles.seatSelectButtonText,

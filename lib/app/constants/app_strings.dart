@@ -5,6 +5,10 @@ class AppStrings {
   static const arrivalStation = '도착역';
   static const select = '선택';
   static const selectSeat = '좌석 선택';
+  static const notice = '알림';
+  static const selectDepartureArrivalMessage = '출발역과 도착역을 모두 선택해주세요.';
+  static const confirm = '확인';
+
   static const stationNames = [
     '수서',
     '동탄',
