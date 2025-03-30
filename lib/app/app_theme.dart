@@ -24,6 +24,7 @@ class AppTheme {
       dividerColor: dividerColor,
 
       appBarTheme: AppBarTheme(backgroundColor: appBarColor),
+      scaffoldBackgroundColor: appBarColor,
 
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
