@@ -142,19 +142,7 @@ class _HomePageState extends State<HomePage> {
                     ),
                   );
                   if (bookSuccessful == true) {
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(
-                        content: Text(
-                          AppStrings.seatBookSuccess,
-                          style: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        behavior: SnackBarBehavior.floating,
-                        duration: Duration(seconds: 4),
-                      ),
-                    );
+                    showAppSnackBar(context, AppStrings.seatBookSuccess);
                   }
                 } else {
                   showAppCupertinoDialog(

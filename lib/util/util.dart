@@ -36,3 +36,16 @@ Future<String?> showAppCupertinoDialog({
     },
   );
 }
+
+void showAppSnackBar(BuildContext context, String message) {
+  ScaffoldMessenger.of(context).showSnackBar(
+    SnackBar(
+      content: Text(
+        message,
+        style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+      ),
+      behavior: SnackBarBehavior.floating,
+      duration: Duration(seconds: 4),
+    ),
+  );
+}
