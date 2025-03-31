@@ -49,7 +49,7 @@ class _SeatPageState extends State<SeatPage> {
               children: [
                 Expanded(
                   child: Align(
-                    alignment: Alignment.center,
+                    alignment: Alignment.centerRight,
                     child: Text(
                       widget.departureStation,
                       style: AppStyles.arrivalDepartureTextSeat,
@@ -67,7 +67,7 @@ class _SeatPageState extends State<SeatPage> {
                 ),
                 Expanded(
                   child: Align(
-                    alignment: Alignment.center,
+                    alignment: Alignment.centerLeft,
                     child: Text(
                       widget.arrivalStation,
                       style: AppStyles.arrivalDepartureTextSeat,
