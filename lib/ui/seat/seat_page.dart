@@ -46,16 +46,33 @@ class _SeatPageState extends State<SeatPage> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                Text(
-                  widget.departureStation,
-                  style: AppStyles.arrivalDepartureTextSeat,
+                Expanded(
+                  child: Align(
+                    alignment: Alignment.center,
+                    child: Text(
+                      widget.departureStation,
+                      style: AppStyles.arrivalDepartureTextSeat,
+                    ),
+                  ),
                 ),
-                Icon(Icons.arrow_circle_right_outlined, size: 30),
-                Text(
-                  widget.arrivalStation,
-                  style: AppStyles.arrivalDepartureTextSeat,
+                Expanded(
+                  child: Align(
+                    alignment: Alignment.center,
+                    child: Icon(
+                      Icons.arrow_circle_right_outlined,
+                      size: 30,
+                    ),
+                  ),
+                ),
+                Expanded(
+                  child: Align(
+                    alignment: Alignment.center,
+                    child: Text(
+                      widget.arrivalStation,
+                      style: AppStyles.arrivalDepartureTextSeat,
+                    ),
+                  ),
                 ),
               ],
             ),
