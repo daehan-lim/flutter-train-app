@@ -1,13 +1,12 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_train_app/app/constants/app_strings.dart';
 import 'package:flutter_train_app/app/constants/app_styles.dart';
 import 'package:flutter_train_app/ui/station_list/station_list_page.dart';
 import 'package:flutter_train_app/ui/seat/seat_page.dart';
 import 'package:flutter_train_app/util/util.dart';
+import 'package:flutter_train_app/widgets/app_menu.dart';
 
 import '../../app/constants/app_colors.dart';
-import '../settings/settings_page.dart';
 
 class HomePage extends StatefulWidget {
   final Function(ThemeMode) updateThemeMode;
@@ -75,47 +74,7 @@ class _HomePageState extends State<HomePage> {
       backgroundColor: AppColors.getScaffoldBackgroundHome(context),
       appBar: AppBar(
         title: Text(AppStrings.trainReservation),
-        actions: [
-          PopupMenuButton<String>(
-            color: AppColors.getMenuBackgroundColor(context),
-            onSelected: (value) {
-              if (value == 'settings') {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder:
-                        (context) => SettingsPage(
-                          brightness: Theme.of(context).brightness,
-                          onThemeChanged: widget.updateThemeMode,
-                        ),
-                  ),
-                );
-              }
-              // Handle other menu items...
-            },
-            icon: Icon(CupertinoIcons.ellipsis_circle),
-            itemBuilder:
-                (BuildContext context) => [
-                  buildMenuItem(
-                    value: 'webview',
-                    label: AppStrings.korailBook,
-                    icon: Icons.web,
-                  ),
-                  // PopupMenuDivider(),
-                  // buildMenuItem(
-                  //   value: 'website',
-                  //   label: '웹사이트 열기',
-                  //   icon: Icons.public,
-                  // ),
-                  PopupMenuDivider(),
-                  buildMenuItem(
-                    value: 'settings',
-                    label: AppStrings.settings,
-                    icon: Icons.settings,
-                  ),
-                ],
-          ),
-        ],
+        actions: [AppMenu(updateThemeMode: widget.updateThemeMode)],
       ),
       body: Padding(
         padding: const EdgeInsets.all(20),
@@ -173,24 +132,6 @@ class _HomePageState extends State<HomePage> {
             ),
           ],
         ),
-      ),
-    );
-  }
-
-  PopupMenuItem<String> buildMenuItem({
-    required String value,
-    required String label,
-    required IconData icon,
-  }) {
-    return PopupMenuItem(
-      value: value,
-      height: AppStyles.menuItemHeight,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Text(label, style: TextStyle(fontSize: 18)),
-          Icon(icon, size: 20),
-        ],
       ),
     );
   }
