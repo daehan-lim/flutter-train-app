@@ -53,24 +53,20 @@ class _SeatPageState extends State<SeatPage> {
                     child: Text(
                       widget.departureStation,
                       style: AppStyles.arrivalDepartureTextSeat,
+                      textAlign: TextAlign.right,
                     ),
                   ),
                 ),
-                Expanded(
-                  child: Align(
-                    alignment: Alignment.center,
-                    child: Icon(
-                      Icons.arrow_circle_right_outlined,
-                      size: 30,
-                    ),
-                  ),
-                ),
+                SizedBox(width: 30), // Space for the icon width
+                Icon(Icons.arrow_circle_right_outlined, size: 30),
+                SizedBox(width: 30), // Space for the icon width
                 Expanded(
                   child: Align(
                     alignment: Alignment.centerLeft,
                     child: Text(
                       widget.arrivalStation,
                       style: AppStyles.arrivalDepartureTextSeat,
+                      textAlign: TextAlign.left,
                     ),
                   ),
                 ),
