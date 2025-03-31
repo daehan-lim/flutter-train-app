@@ -14,6 +14,21 @@ class AppStrings {
   static const confirmBook = '예매 하시겠습니까?';
   static const seatNumber = '좌석: %d-%s';
   static const seatBookSuccess = '좌석이 성공적으로 예약되었습니다.';
+  static const lightMode = '라이트 모드';
+  static const darkMode = '다크 모드';
+  static const subject = '제목';
+  static const emailBody = '열차 앱 피드백';
+  static const emailSendFail = '이메일 앱 또는 브라우저를 열 수 없습니다.';
+  static const devEmail = 'penjan.eng@gmail.com';
+  static const chooseTheme = '테마 선택';
+  static const appTheme = '앱 테마';
+  static const themeMode = '테마 모드';
+  static const info = '정보';
+  static const contactDev = '개발자에게 문의';
+  static const settings = '설정';
+  static const korailBook = '코레일 예약';
+  static const version = '버전';
+  static const versionCode = '1.0.0';
 
   static const stationNames = [
     '수서',
@@ -29,5 +44,7 @@ class AppStrings {
     '부산',
   ];
   static const colLetters = ['A', 'B', 'C', 'D'];
+
+
 
 }

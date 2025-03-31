@@ -7,9 +7,12 @@ import 'package:flutter_train_app/ui/seat/seat_page.dart';
 import 'package:flutter_train_app/util/util.dart';
 
 import '../../app/constants/app_colors.dart';
+import '../settings/settings_page.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+  final Function(ThemeMode) updateThemeMode;
+
+  const HomePage({super.key, required this.updateThemeMode});
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -75,13 +78,27 @@ class _HomePageState extends State<HomePage> {
         actions: [
           PopupMenuButton<String>(
             color: AppColors.getMenuBackgroundColor(context),
-            onSelected: (_) {},
-            icon: Icon(CupertinoIcons.ellipsis_circle), // iOS-style icon
+            onSelected: (value) {
+              if (value == 'settings') {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder:
+                        (context) => SettingsPage(
+                          brightness: Theme.of(context).brightness,
+                          onThemeChanged: widget.updateThemeMode,
+                        ),
+                  ),
+                );
+              }
+              // Handle other menu items...
+            },
+            icon: Icon(CupertinoIcons.ellipsis_circle),
             itemBuilder:
                 (BuildContext context) => [
                   buildMenuItem(
                     value: 'webview',
-                    label: '코레일 예약',
+                    label: AppStrings.korailBook,
                     icon: Icons.web,
                   ),
                   // PopupMenuDivider(),
@@ -93,7 +110,7 @@ class _HomePageState extends State<HomePage> {
                   PopupMenuDivider(),
                   buildMenuItem(
                     value: 'settings',
-                    label: '설정',
+                    label: AppStrings.settings,
                     icon: Icons.settings,
                   ),
                 ],
@@ -171,10 +188,7 @@ class _HomePageState extends State<HomePage> {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Text(
-            label,
-            style: TextStyle(fontSize: 18),
-          ),
+          Text(label, style: TextStyle(fontSize: 18)),
           Icon(icon, size: 20),
         ],
       ),

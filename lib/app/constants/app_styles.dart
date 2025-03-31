@@ -30,6 +30,11 @@ class AppStyles {
     fontWeight: FontWeight.bold,
   );
 
+  static const mediumText = TextStyle(
+    fontSize: 15,
+    fontWeight: FontWeight.bold
+  );
+
   static getSelectedStationText(BuildContext context) {
     return TextStyle(
       fontSize: 40,

@@ -6,18 +6,31 @@ void main() {
   runApp(const MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
+
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  ThemeMode _themeMode = ThemeMode.system;
+
+  void updateThemeMode(ThemeMode mode) {
+    setState(() {
+      _themeMode = mode;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Train Tickets',
       debugShowCheckedModeBanner: false,
-      themeMode: ThemeMode.system,
+      themeMode: _themeMode,
       theme: AppTheme.buildTheme(Brightness.light),
       darkTheme: AppTheme.buildTheme(Brightness.dark),
-      home: HomePage(),
+      home: HomePage(updateThemeMode: updateThemeMode),
     );
   }
 }

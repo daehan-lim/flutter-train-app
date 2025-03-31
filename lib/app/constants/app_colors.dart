@@ -32,4 +32,10 @@ class AppColors {
         ? Color(0xFF202020)
         : Colors.white;
   }
+
+  static Color getCheckIconColor(BuildContext context) {
+    return AppTheme.isDark(context)
+        ? Colors.greenAccent
+        : Colors.green;
+  }
 }
