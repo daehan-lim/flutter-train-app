@@ -2,6 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_train_app/app/app_theme.dart';
 
 class AppStyles {
+  //dimensions
+  static const double smallSeatBoxDimension = 24;
+  static const double bigSeatBoxDimension = 50;
+  static const double menuItemHeight = 33;
+
   static const arrivalDepartureText = TextStyle(
     fontSize: 16,
     color: Colors.grey,
@@ -24,9 +29,6 @@ class AppStyles {
     color: Colors.purple,
     fontWeight: FontWeight.bold,
   );
-
-  static const double smallSeatBoxDimension = 24;
-  static const double bigSeatBoxDimension = 50;
 
   static getSelectedStationText(BuildContext context) {
     return TextStyle(

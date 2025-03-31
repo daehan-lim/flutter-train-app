@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_train_app/app/constants/app_strings.dart';
 import 'package:flutter_train_app/app/constants/app_styles.dart';
@@ -69,7 +70,36 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.getScaffoldBackgroundHome(context),
-      appBar: AppBar(title: Text(AppStrings.trainReservation)),
+      appBar: AppBar(
+        title: Text(AppStrings.trainReservation),
+        actions: [
+          PopupMenuButton<String>(
+            color: AppColors.getMenuBackgroundColor(context),
+            onSelected: (_) {},
+            icon: Icon(CupertinoIcons.ellipsis_circle), // iOS-style icon
+            itemBuilder:
+                (BuildContext context) => [
+                  buildMenuItem(
+                    value: 'webview',
+                    label: '코레일 예약',
+                    icon: Icons.web,
+                  ),
+                  // PopupMenuDivider(),
+                  // buildMenuItem(
+                  //   value: 'website',
+                  //   label: '웹사이트 열기',
+                  //   icon: Icons.public,
+                  // ),
+                  PopupMenuDivider(),
+                  buildMenuItem(
+                    value: 'settings',
+                    label: '설정',
+                    icon: Icons.settings,
+                  ),
+                ],
+          ),
+        ],
+      ),
       body: Padding(
         padding: const EdgeInsets.all(20),
         child: Column(
@@ -138,6 +168,27 @@ class _HomePageState extends State<HomePage> {
             ),
           ],
         ),
+      ),
+    );
+  }
+
+  PopupMenuItem<String> buildMenuItem({
+    required String value,
+    required String label,
+    required IconData icon,
+  }) {
+    return PopupMenuItem(
+      value: value,
+      height: AppStyles.menuItemHeight,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Text(
+            label,
+            style: TextStyle(fontSize: 18),
+          ),
+          Icon(icon, size: 20),
+        ],
       ),
     );
   }

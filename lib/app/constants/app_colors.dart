@@ -26,4 +26,10 @@ class AppColors {
         ? Color(0xFF5F6161) // Colors.grey[300]
         : Color(0xFFE0E0E0); // Colors.grey[300]
   }
+
+  static Color getMenuBackgroundColor(BuildContext context) {
+    return AppTheme.isDark(context)
+        ? Color(0xFF202020)
+        : Colors.white;
+  }
 }
