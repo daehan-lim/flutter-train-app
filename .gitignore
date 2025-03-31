@@ -255,3 +255,5 @@ app.*.map.json
 /android/app/release
 
 .metadata
+/ios/Podfile
+/macos/Podfile
