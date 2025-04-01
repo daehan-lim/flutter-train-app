@@ -84,7 +84,7 @@ class AppMenu extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text(label, style: TextStyle(fontSize: 18)),
+            Text(label, style: TextStyle(fontSize: 17)),
             Icon(icon, size: 20),
           ],
         ),
