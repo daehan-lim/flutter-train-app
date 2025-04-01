@@ -3,6 +3,10 @@ import 'package:flutter_train_app/ui/seat/widgets/seat_boxes.dart';
 
 import '../../../app/constants/app_styles.dart';
 
+/// A widget that displays the train seat grid with row numbers and column letters.
+///
+/// This widget renders a visual representation of the train's seating arrangement
+/// and handles seat selection interactions.
 class SeatList extends StatelessWidget {
   final int? selectedRow;
   final int? selectedCol;
@@ -59,6 +63,10 @@ class SeatList extends StatelessWidget {
     );
   }
 
+  /// Creates an interactive seat box for a specific row and column.
+  ///
+  /// [row] The row number of this seat
+  /// [col] The column number of this seat (1-4 corresponding to A-D)
   Widget getSeatBox({
     required int row,
     required int col,

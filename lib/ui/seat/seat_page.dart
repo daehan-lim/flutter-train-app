@@ -6,6 +6,10 @@ import 'package:flutter_train_app/ui/seat/widgets/seat_list.dart';
 
 import '../../util/util.dart';
 
+/// A page that displays the train seating arrangement and allows seat selection.
+///
+/// This page shows the departure and arrival stations, a legend for seat status,
+/// and the seating grid for users to select a seat for booking.
 class SeatPage extends StatefulWidget {
   final String departureStation;
   final String arrivalStation;
@@ -24,6 +28,13 @@ class _SeatPageState extends State<SeatPage> {
   int? selectedRow;
   int? selectedCol;
 
+  /// Handles the seat selection logic when a seat is tapped.
+  ///
+  /// Tapping an unselected seat selects it.
+  /// Tapping the currently selected seat deselects it.
+  ///
+  /// [newRow] The row of the tapped seat
+  /// [newCol] The column of the tapped seat
   void onSeatSelected(int newRow, int newCol) {
     setState(() {
       if (selectedRow == newRow && selectedCol == newCol) {

@@ -4,6 +4,12 @@ import 'package:flutter_train_app/app/constants/app_styles.dart';
 
 import '../../app/constants/app_colors.dart';
 
+/// Builds a station selector widget that displays the station type and selected station.
+///
+/// [isDeparture] determines whether this is for departure station (true)
+/// or arrival station (false).
+///
+/// Returns a tappable widget that shows the station type and current selection
 class StationListPage extends StatelessWidget {
   final String pageTitle;
   final String? otherStation;

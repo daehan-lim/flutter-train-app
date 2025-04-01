@@ -19,12 +19,18 @@ class _MyAppState extends State<MyApp> {
   ThemeMode _themeMode = ThemeMode.system;
   String _language = 'ko';
 
+  /// Updates the application theme mode.
+  ///
+  /// [mode] The new ThemeMode to apply (light, dark, or system)
   void updateThemeMode(ThemeMode mode) {
     setState(() {
       _themeMode = mode;
     });
   }
 
+  /// Updates the application language.
+  ///
+  /// [lang] The language code to switch to ('en' or 'ko')
   void updateLanguage(String lang) {
     setState(() {
       _language = lang;

@@ -5,6 +5,10 @@ import 'package:flutter_train_app/util/util.dart';
 import 'package:settings_ui/settings_ui.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+/// Settings page that allows users to configure app preferences.
+///
+/// This page provides options to change theme and language settings,
+/// as well as view app information and contact the developer.
 class SettingsPage extends StatelessWidget {
   final Brightness brightness;
   final Function(ThemeMode) onThemeChanged;
@@ -20,6 +24,10 @@ class SettingsPage extends StatelessWidget {
     required this.onLanguageChanged,
   });
 
+  /// Launches the default email client to contact the developer.
+  ///
+  /// Falls back to a browser-based email client if no email app is available.
+  /// Shows an error message if both approaches fail.
   Future<void> _launchEmail(BuildContext context) async {
     final Uri emailUri = Uri(
       scheme: 'mailto',
@@ -45,6 +53,7 @@ class SettingsPage extends StatelessWidget {
     }
   }
 
+  /// Shows a bottom sheet for selecting the app theme (light/dark).
   void _showThemeBottomSheet(BuildContext context) {
     showOptionsBottomSheet(
       context: context,
@@ -59,6 +68,7 @@ class SettingsPage extends StatelessWidget {
     );
   }
 
+  /// Shows a bottom sheet for selecting the app language (Korean/English).
   void _showLanguageBottomSheet(BuildContext context) {
     showOptionsBottomSheet(
       context: context,
@@ -73,6 +83,13 @@ class SettingsPage extends StatelessWidget {
     );
   }
 
+  /// Shows a customized bottom sheet with two selectable options.
+  ///
+  /// [title] The title displayed at the top of the bottom sheet
+  /// [option1Text] The text for the first option
+  /// [option1Icon] The icon for the first option
+  /// [onOption1Tap] Callback for when the first option is selected
+  /// [selectedIndex] The currently selected option (0 for first, 1 for second)
   void showOptionsBottomSheet({
     required BuildContext context,
     required String title,

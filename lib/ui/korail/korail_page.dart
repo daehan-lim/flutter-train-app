@@ -5,6 +5,10 @@ import 'package:webview_flutter/webview_flutter.dart';
 import '../../util/util.dart';
 import '../../widgets/app_menu.dart';
 
+/// A page that displays the official Korail website in a WebView.
+///
+/// This allows users to book tickets directly through the official Korean Railways website.
+/// The page is displayed in Korean or English based on the app's current language setting.
 class KorailPage extends StatelessWidget {
   final void Function(ThemeMode _) updateThemeMode;
   final void Function(String lang) updateLanguage;

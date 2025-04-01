@@ -7,7 +7,12 @@ import 'package:flutter_train_app/widgets/app_menu.dart';
 
 import '../../app/constants/app_colors.dart';
 
+/// A stateful widget that displays the home page of the train reservation app.
+///
+/// This page allows users to select departure and arrival stations, and navigate
+/// to the seat selection page. It also provides access to theme and language settings.
 class HomePage extends StatefulWidget {
+  /// Callback function to update the app's theme mode
   final Function(ThemeMode) updateThemeMode;
   final void Function(String lang) updateLanguage;
 
@@ -25,6 +30,10 @@ class _HomePageState extends State<HomePage> {
   String? _arrivalStation;
   String? _departureStation;
 
+  /// Navigates to the station selection screen and updates the selected station.
+  ///
+  /// [isDeparture] determines whether the user is selecting a departure station (true)
+  /// or an arrival station (false).
   void _selectStation({required bool isDeparture}) async {
     final String title =
         isDeparture
@@ -53,6 +62,12 @@ class _HomePageState extends State<HomePage> {
     }
   }
 
+  /// Builds a station selector widget that displays the station type and selected station.
+  ///
+  /// [isDeparture] determines whether this is for departure station (true)
+  /// or arrival station (false).
+  ///
+  /// Returns a tappable widget that shows the station type and current selection
   Widget _buildStationSelector({required bool isDeparture}) {
     final String title =
         isDeparture
