@@ -51,8 +51,8 @@ class SettingsPage extends StatelessWidget {
       title: strings(context).chooseTheme,
       option1Text: strings(context).lightMode,
       option2Text: strings(context).darkMode,
-      option1Icon: Icons.light_mode,
-      option2Icon: Icons.dark_mode,
+      option1Icon: const Icon(Icons.light_mode),
+      option2Icon: const Icon(Icons.dark_mode),
       selectedIndex: brightness == Brightness.light ? 0 : 1,
       onOption1Tap: () => onThemeChanged(ThemeMode.light),
       onOption2Tap: () => onThemeChanged(ThemeMode.dark),
@@ -65,8 +65,8 @@ class SettingsPage extends StatelessWidget {
       title: strings(context).chooseLanguage,
       option1Text: strings(context).korean,
       option2Text: strings(context).english,
-      option1Icon: Icons.language,
-      option2Icon: Icons.language,
+      option1Icon: const Text('🇰🇷', style: TextStyle(fontSize: 24)),
+      option2Icon: const Text('🇺🇸', style: TextStyle(fontSize: 24)),
       selectedIndex: language == 'ko' ? 0 : 1,
       onOption1Tap: () => onLanguageChanged('ko'),
       onOption2Tap: () => onLanguageChanged('en'),
@@ -79,8 +79,8 @@ class SettingsPage extends StatelessWidget {
     required String title,
     required String option1Text,
     required String option2Text,
-    required IconData option1Icon,
-    required IconData option2Icon,
+    required Widget option1Icon,
+    required Widget option2Icon,
     required VoidCallback onOption1Tap,
     required VoidCallback onOption2Tap,
     required int selectedIndex, // 0 or 1
@@ -120,7 +120,7 @@ class SettingsPage extends StatelessWidget {
                 Divider(color: Theme.of(context).dividerColor),
                 ListTile(
                   title: Text(option1Text),
-                  leading: Icon(option1Icon),
+                  leading: option1Icon,
                   trailing: selectedIndex == 0
                       ? Icon(
                     Icons.check_circle,
@@ -134,7 +134,7 @@ class SettingsPage extends StatelessWidget {
                 ),
                 ListTile(
                   title: Text(option2Text),
-                  leading: Icon(option2Icon),
+                  leading: option2Icon,
                   trailing: selectedIndex == 1
                       ? Icon(
                     Icons.check_circle,
