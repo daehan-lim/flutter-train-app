@@ -73,7 +73,6 @@ class SettingsPage extends StatelessWidget {
     );
   }
 
-
   void showOptionsBottomSheet({
     required BuildContext context,
     required String title,
@@ -99,7 +98,12 @@ class SettingsPage extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               children: [
                 Padding(
-                  padding: const EdgeInsets.only(top: 16, left: 16, right: 16, bottom: 5),
+                  padding: const EdgeInsets.only(
+                    top: 16,
+                    left: 16,
+                    right: 16,
+                    bottom: 5,
+                  ),
                   child: Row(
                     children: [
                       Text(
@@ -121,12 +125,13 @@ class SettingsPage extends StatelessWidget {
                 ListTile(
                   title: Text(option1Text),
                   leading: option1Icon,
-                  trailing: selectedIndex == 0
-                      ? Icon(
-                    Icons.check_circle,
-                    color: AppColors.getCheckIconColor(context),
-                  )
-                      : null,
+                  trailing:
+                      selectedIndex == 0
+                          ? Icon(
+                            Icons.check_circle,
+                            color: AppColors.getCheckIconColor(context),
+                          )
+                          : null,
                   onTap: () {
                     onOption1Tap();
                     Navigator.pop(context);
@@ -135,12 +140,13 @@ class SettingsPage extends StatelessWidget {
                 ListTile(
                   title: Text(option2Text),
                   leading: option2Icon,
-                  trailing: selectedIndex == 1
-                      ? Icon(
-                    Icons.check_circle,
-                    color: AppColors.getCheckIconColor(context),
-                  )
-                      : null,
+                  trailing:
+                      selectedIndex == 1
+                          ? Icon(
+                            Icons.check_circle,
+                            color: AppColors.getCheckIconColor(context),
+                          )
+                          : null,
                   onTap: () {
                     onOption2Tap();
                     Navigator.pop(context);
@@ -155,7 +161,6 @@ class SettingsPage extends StatelessWidget {
     );
   }
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -165,7 +170,10 @@ class SettingsPage extends StatelessWidget {
         sections: [
           SettingsSection(
             // margin: EdgeInsetsDirectional.only(start: 18, end: 18, top: 7, bottom: 7),
-            title: Text(strings(context).appSettings, style: AppStyles.mediumText),
+            title: Text(
+              strings(context).appSettings,
+              style: AppStyles.mediumText,
+            ),
             tiles: [
               SettingsTile(
                 leading: const Icon(Icons.brightness_4),

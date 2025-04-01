@@ -50,7 +50,10 @@ class _MyAppState extends State<MyApp> {
         Locale('ko'), // Korean
         Locale('en'), // English
       ],
-      home: HomePage(updateThemeMode: updateThemeMode, updateLanguage: updateLanguage),
+      home: HomePage(
+        updateThemeMode: updateThemeMode,
+        updateLanguage: updateLanguage,
+      ),
     );
   }
 }
