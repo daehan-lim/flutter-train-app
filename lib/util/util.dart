@@ -49,6 +49,6 @@ void showAppSnackBar(BuildContext context, String message) {
   );
 }
 
-AppLocalizations strings(BuildContext context){
- return AppLocalizations.of(context)!;
+AppLocalizations strings(BuildContext context) {
+  return AppLocalizations.of(context)!;
 }

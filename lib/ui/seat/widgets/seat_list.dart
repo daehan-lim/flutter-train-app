@@ -59,14 +59,18 @@ class SeatList extends StatelessWidget {
     );
   }
 
-  Widget getSeatBox({required int row, required int col, required BuildContext context}) {
+  Widget getSeatBox({
+    required int row,
+    required int col,
+    required BuildContext context,
+  }) {
     bool selected = row == selectedRow && col == selectedCol;
     return GestureDetector(
       onTap: () => onSeatSelected(row, col),
       child: buildSeatBox(
         selected: selected,
         dimension: AppStyles.bigSeatBoxDimension,
-        context: context
+        context: context,
       ),
     );
   }
