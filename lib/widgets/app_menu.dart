@@ -2,9 +2,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../app/constants/app_colors.dart';
-import '../app/constants/app_strings.dart';
 import '../app/constants/app_styles.dart';
 import '../ui/settings/settings_page.dart';
+import '../util/util.dart';
 
 class AppMenu extends StatelessWidget {
   final void Function(ThemeMode _) updateThemeMode;
@@ -42,7 +42,7 @@ class AppMenu extends StatelessWidget {
           (BuildContext context) => [
         buildMenuItem(
           value: 'webview',
-          label: AppStrings.korailBook,
+          label: strings(context).korailBook,
           icon: Icons.web,
         ),
         // PopupMenuDivider(),
@@ -54,7 +54,7 @@ class AppMenu extends StatelessWidget {
         // PopupMenuDivider(),
         buildMenuItem(
           value: 'settings',
-          label: AppStrings.settings,
+          label: strings(context).settings,
           icon: Icons.settings,
         ),
       ],

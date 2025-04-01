@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_train_app/app/constants/app_strings.dart';
+import 'package:flutter_train_app/app/constants/app_constants.dart';
 import 'package:flutter_train_app/app/constants/app_styles.dart';
 
 import '../../app/constants/app_colors.dart';
@@ -7,7 +7,7 @@ import '../../app/constants/app_colors.dart';
 class StationListPage extends StatelessWidget {
   final String pageTitle;
   final String? otherStation;
-  final List<String> stationNames = List.from(AppStrings.stationNames);
+  final List<String> stationNames = List.from(AppConstants.stationNames);
 
   StationListPage({
     required this.pageTitle,

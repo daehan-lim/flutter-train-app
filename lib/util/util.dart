@@ -2,8 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-import '../app/constants/app_strings.dart';
-
 Future<String?> showAppCupertinoDialog({
   required BuildContext context,
   required String title,
@@ -19,16 +17,16 @@ Future<String?> showAppCupertinoDialog({
         actions: [
           if (showCancel)
             CupertinoDialogAction(
-              onPressed: () => Navigator.pop(context, AppStrings.cancel),
+              onPressed: () => Navigator.pop(context, strings(context).cancel),
               child: Text(
-                AppStrings.cancel,
+                strings(context).cancel,
                 style: TextStyle(color: Colors.red, fontSize: 17),
               ),
             ),
           CupertinoDialogAction(
-            onPressed: () => Navigator.pop(context, AppStrings.confirm),
+            onPressed: () => Navigator.pop(context, strings(context).confirm),
             child: Text(
-              AppStrings.confirm,
+              strings(context).confirm,
               style: TextStyle(color: Colors.blue, fontSize: 17),
             ),
           ),

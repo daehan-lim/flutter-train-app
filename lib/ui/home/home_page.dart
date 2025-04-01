@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_train_app/app/constants/app_strings.dart';
 import 'package:flutter_train_app/app/constants/app_styles.dart';
 import 'package:flutter_train_app/ui/station_list/station_list_page.dart';
 import 'package:flutter_train_app/ui/seat/seat_page.dart';
@@ -23,7 +22,7 @@ class _HomePageState extends State<HomePage> {
 
   void _selectStation({required bool isDeparture}) async {
     final String title =
-        isDeparture ? AppStrings.departureStation : AppStrings.arrivalStation;
+        isDeparture ? strings(context).departureStation : strings(context).arrivalStation;
     final String? otherStation =
         isDeparture ? _arrivalStation : _departureStation;
 
@@ -49,7 +48,7 @@ class _HomePageState extends State<HomePage> {
 
   Widget _buildStationSelector({required bool isDeparture}) {
     final String title =
-        isDeparture ? AppStrings.departureStation : AppStrings.arrivalStation;
+        isDeparture ?  strings(context).departureStation :  strings(context).arrivalStation;
     final String? selectedStation =
         isDeparture ? _departureStation : _arrivalStation;
 
@@ -60,7 +59,7 @@ class _HomePageState extends State<HomePage> {
         children: [
           Text(title, style: AppStyles.arrivalDepartureText),
           Text(
-            selectedStation ?? AppStrings.select,
+            selectedStation ?? strings(context).select,
             style: AppStyles.getSelectedStationText(context),
           ),
         ],
@@ -73,7 +72,7 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       backgroundColor: AppColors.getScaffoldBackgroundHome(context),
       appBar: AppBar(
-        title: Text(AppStrings.trainReservation),
+        title: Text(strings(context).trainReservation),
         actions: [AppMenu(updateThemeMode: widget.updateThemeMode)],
       ),
       body: Padding(
@@ -118,17 +117,17 @@ class _HomePageState extends State<HomePage> {
                     ),
                   );
                   if (bookSuccessful == true) {
-                    showAppSnackBar(context, AppStrings.seatBookSuccess);
+                    showAppSnackBar(context, strings(context).seatBookSuccess);
                   }
                 } else {
                   showAppCupertinoDialog(
                     context: context,
-                    title: AppStrings.notice,
-                    content: AppStrings.selectDepartureArrivalMessage,
+                    title: strings(context).notice,
+                    content: strings(context).selectDepartureArrivalMessage,
                   );
                 }
               },
-              child: Text(AppStrings.selectSeat, style: AppStyles.buttonText),
+              child: Text(strings(context).selectSeat, style: AppStyles.buttonText),
             ),
           ],
         ),

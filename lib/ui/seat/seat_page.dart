@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_train_app/app/constants/app_strings.dart';
+import 'package:flutter_train_app/app/constants/app_constants.dart';
 import 'package:flutter_train_app/app/constants/app_styles.dart';
 import 'package:flutter_train_app/ui/seat/widgets/seat_boxes.dart';
 import 'package:flutter_train_app/ui/seat/widgets/seat_list.dart';
@@ -39,7 +39,7 @@ class _SeatPageState extends State<SeatPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text(AppStrings.selectSeat)),
+      appBar: AppBar(title: Text(strings(context).selectSeat)),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20),
         child: Column(
@@ -82,7 +82,7 @@ class _SeatPageState extends State<SeatPage> {
                   context: context,
                 ),
                 SizedBox(width: 4),
-                Text(AppStrings.selected),
+                Text(strings(context).selected),
                 SizedBox(width: 20),
                 buildSeatBox(
                   selected: false,
@@ -90,7 +90,7 @@ class _SeatPageState extends State<SeatPage> {
                   context: context,
                 ),
                 SizedBox(width: 4),
-                Text(AppStrings.selected),
+                Text(strings(context).selected),
               ],
             ),
             SeatList(
@@ -104,21 +104,21 @@ class _SeatPageState extends State<SeatPage> {
                   // when row is null, column is also null
                   final String? result = await showAppCupertinoDialog(
                     context: context,
-                    title: AppStrings.confirmBook,
-                    content: AppStrings.seatNumber
+                    title: strings(context).confirmBook,
+                    content: strings(context).seatNumber
                         .replaceAll('%d', '$selectedRow')
                         .replaceAll(
                           '%s',
-                          AppStrings.colLetters[selectedCol! - 1],
+                          AppConstants.colLetters[selectedCol! - 1],
                         ),
                     showCancel: true,
                   );
-                  if (result == AppStrings.confirm) {
+                  if (result == strings(context).confirm) {
                     Navigator.pop(context, true);
                   }
                 }
               },
-              child: Text(AppStrings.book, style: AppStyles.buttonText),
+              child: Text(strings(context).book, style: AppStyles.buttonText),
             ),
             SizedBox(height: 40),
           ],

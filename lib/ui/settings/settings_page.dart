@@ -5,8 +5,6 @@ import 'package:flutter_train_app/util/util.dart';
 import 'package:settings_ui/settings_ui.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-import '../../app/constants/app_strings.dart';
-
 class SettingsPage extends StatelessWidget {
   final Brightness brightness;
   final Function(ThemeMode) onThemeChanged;
@@ -22,7 +20,7 @@ class SettingsPage extends StatelessWidget {
     final Uri emailUri = Uri(
       scheme: 'mailto',
       path: 'penjan.eng@gmail.com',
-      queryParameters: {AppStrings.subject: AppStrings.emailBody},
+      queryParameters: {strings(context).subject: strings(context).emailBody},
     );
 
     // First, try opening the default email app
@@ -32,13 +30,13 @@ class SettingsPage extends StatelessWidget {
       // If no email app, open browser-based mail client (Gmail)
       final fallbackUrl = Uri.parse(
         'https://mail.google.com/mail/?view=cm&fs=1'
-        '&to=${AppStrings.devEmail}&su=${Uri.encodeComponent(AppStrings.emailBody)}',
+        '&to=${strings(context).devEmail}&su=${Uri.encodeComponent(strings(context).emailBody)}',
       );
       if (await canLaunchUrl(fallbackUrl)) {
         await launchUrl(fallbackUrl, mode: LaunchMode.externalApplication);
       } else {
         // No browser found either
-        showAppSnackBar(context, AppStrings.emailSendFail);
+        showAppSnackBar(context, strings(context).emailSendFail);
       }
     }
   }
@@ -62,7 +60,7 @@ class SettingsPage extends StatelessWidget {
                   child: Row(
                     children: [
                       Text(
-                        AppStrings.chooseTheme,
+                        strings(context).chooseTheme,
                         style: TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.bold,
@@ -78,7 +76,7 @@ class SettingsPage extends StatelessWidget {
                 ),
                 Divider(color: Theme.of(context).dividerColor),
                 ListTile(
-                  title: const Text(AppStrings.lightMode),
+                  title: Text(strings(context).lightMode),
                   leading: const Icon(Icons.light_mode),
                   trailing:
                       brightness == Brightness.light
@@ -93,7 +91,7 @@ class SettingsPage extends StatelessWidget {
                   },
                 ),
                 ListTile(
-                  title: const Text(AppStrings.darkMode),
+                  title: Text(strings(context).darkMode),
                   leading: const Icon(Icons.dark_mode),
                   trailing:
                       brightness == Brightness.dark
@@ -119,36 +117,36 @@ class SettingsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text(AppStrings.settings)),
+      appBar: AppBar(title: Text(strings(context).settings)),
       body: SettingsList(
         sections: [
           SettingsSection(
-            title: const Text(AppStrings.appTheme, style: AppStyles.mediumText),
+            title: Text(strings(context).appTheme, style: AppStyles.mediumText),
             tiles: [
               SettingsTile(
                 leading: const Icon(Icons.brightness_4),
-                title: const Text(AppStrings.themeMode),
+                title: Text(strings(context).themeMode),
                 value: Text(
                   brightness == Brightness.dark
-                      ? AppStrings.darkMode
-                      : AppStrings.lightMode,
+                      ? strings(context).darkMode
+                      : strings(context).lightMode,
                 ),
                 onPressed: (context) => _showThemeBottomSheet(context),
               ),
             ],
           ),
           SettingsSection(
-            title: const Text(AppStrings.info, style: AppStyles.mediumText),
+            title: Text(strings(context).info, style: AppStyles.mediumText),
             tiles: [
               SettingsTile(
                 leading: const Icon(Icons.email),
-                title: const Text(AppStrings.contactDev),
+                title: Text(strings(context).contactDev),
                 onPressed: (context) => _launchEmail(context),
               ),
               SettingsTile(
                 leading: const Icon(Icons.info_outline),
-                title: const Text(AppStrings.version),
-                value: const Text(AppStrings.versionCode),
+                title: Text(strings(context).version),
+                value: Text(strings(context).versionCode),
                 onPressed: (_) {},
               ),
             ],
