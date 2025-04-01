@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_train_app/ui/korail/korail_page.dart';
 
 import '../app/constants/app_colors.dart';
 import '../app/constants/app_styles.dart';
@@ -36,8 +37,12 @@ class AppMenu extends StatelessWidget {
                   ),
             ),
           );
+        } else if (value == 'webview') {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => KorailPage()),
+          );
         }
-        // Handle other menu items...
       },
       icon: Padding(
         padding: const EdgeInsets.only(right: 10),

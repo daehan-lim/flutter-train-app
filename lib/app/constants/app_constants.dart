@@ -1,5 +1,4 @@
 /// Constants used throughout the train reservation app that don't require localization.
-/// These include fixed data like station names and seat column identifiers.
 class AppConstants {
   /// List of train station names in Korean.
   /// Used in station selection screens and displaying routes.
@@ -20,4 +19,6 @@ class AppConstants {
   /// Letters representing seat columns in train cars.
   /// Used for seat selection and displaying seat information.
   static const colLetters = ['A', 'B', 'C', 'D'];
+
+  static const korailUrl = 'https://www.korail.com/';
 }
