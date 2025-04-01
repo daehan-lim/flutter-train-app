@@ -5,7 +5,7 @@ class AppStyles {
   //dimensions
   static const double smallSeatBoxDimension = 24;
   static const double bigSeatBoxDimension = 50;
-  static const double menuItemHeight = 33;
+  static const double menuItemHeight = 45;
 
   static const arrivalDepartureText = TextStyle(
     fontSize: 16,
