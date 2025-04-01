@@ -20,12 +20,16 @@
   "emailSendFail": "이메일 앱 또는 브라우저를 열 수 없습니다.",
   "devEmail": "penjan.eng@gmail.com",
   "chooseTheme": "테마 선택",
-  "appTheme": "앱 테마",
+  "appSettings": "앱 설정",
   "themeMode": "테마 모드",
   "info": "정보",
   "contactDev": "개발자에게 문의",
   "settings": "설정",
   "korailBook": "코레일 예약",
   "version": "버전",
-  "versionCode": "1.0.0"
+  "versionCode": "1.0.0",
+  "language": "언어",
+  "english": "영어",
+  "korean": "한국어",
+  "chooseLanguage": "언어 선택"
 }

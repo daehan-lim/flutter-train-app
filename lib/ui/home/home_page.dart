@@ -9,8 +9,13 @@ import '../../app/constants/app_colors.dart';
 
 class HomePage extends StatefulWidget {
   final Function(ThemeMode) updateThemeMode;
+  final void Function(String lang) updateLanguage;
 
-  const HomePage({super.key, required this.updateThemeMode});
+  const HomePage({
+    super.key,
+    required this.updateThemeMode,
+    required this.updateLanguage,
+  });
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -22,7 +27,9 @@ class _HomePageState extends State<HomePage> {
 
   void _selectStation({required bool isDeparture}) async {
     final String title =
-        isDeparture ? strings(context).departureStation : strings(context).arrivalStation;
+        isDeparture
+            ? strings(context).departureStation
+            : strings(context).arrivalStation;
     final String? otherStation =
         isDeparture ? _arrivalStation : _departureStation;
 
@@ -48,7 +55,9 @@ class _HomePageState extends State<HomePage> {
 
   Widget _buildStationSelector({required bool isDeparture}) {
     final String title =
-        isDeparture ?  strings(context).departureStation :  strings(context).arrivalStation;
+        isDeparture
+            ? strings(context).departureStation
+            : strings(context).arrivalStation;
     final String? selectedStation =
         isDeparture ? _departureStation : _arrivalStation;
 
@@ -73,7 +82,12 @@ class _HomePageState extends State<HomePage> {
       backgroundColor: AppColors.getScaffoldBackgroundHome(context),
       appBar: AppBar(
         title: Text(strings(context).trainReservation),
-        actions: [AppMenu(updateThemeMode: widget.updateThemeMode)],
+        actions: [
+          AppMenu(
+            updateThemeMode: widget.updateThemeMode,
+            updateLanguage: widget.updateLanguage,
+          ),
+        ],
       ),
       body: Padding(
         padding: const EdgeInsets.all(20),
@@ -127,7 +141,10 @@ class _HomePageState extends State<HomePage> {
                   );
                 }
               },
-              child: Text(strings(context).selectSeat, style: AppStyles.buttonText),
+              child: Text(
+                strings(context).selectSeat,
+                style: AppStyles.buttonText,
+              ),
             ),
           ],
         ),

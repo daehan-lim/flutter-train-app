@@ -9,12 +9,16 @@ class SettingsPage extends StatelessWidget {
   final Brightness brightness;
   final Function(ThemeMode) onThemeChanged;
 
+  final String language;
+  final Function(String) onLanguageChanged;
+
   const SettingsPage({
     super.key,
     required this.brightness,
     required this.onThemeChanged,
+    required this.language,
+    required this.onLanguageChanged,
   });
-
 
   Future<void> _launchEmail(BuildContext context) async {
     final Uri emailUri = Uri(
@@ -42,6 +46,45 @@ class SettingsPage extends StatelessWidget {
   }
 
   void _showThemeBottomSheet(BuildContext context) {
+    showOptionsBottomSheet(
+      context: context,
+      title: strings(context).chooseTheme,
+      option1Text: strings(context).lightMode,
+      option2Text: strings(context).darkMode,
+      option1Icon: Icons.light_mode,
+      option2Icon: Icons.dark_mode,
+      selectedIndex: brightness == Brightness.light ? 0 : 1,
+      onOption1Tap: () => onThemeChanged(ThemeMode.light),
+      onOption2Tap: () => onThemeChanged(ThemeMode.dark),
+    );
+  }
+
+  void _showLanguageBottomSheet(BuildContext context) {
+    showOptionsBottomSheet(
+      context: context,
+      title: strings(context).chooseLanguage,
+      option1Text: strings(context).korean,
+      option2Text: strings(context).english,
+      option1Icon: Icons.language,
+      option2Icon: Icons.language,
+      selectedIndex: language == 'ko' ? 0 : 1,
+      onOption1Tap: () => onLanguageChanged('ko'),
+      onOption2Tap: () => onLanguageChanged('en'),
+    );
+  }
+
+
+  void showOptionsBottomSheet({
+    required BuildContext context,
+    required String title,
+    required String option1Text,
+    required String option2Text,
+    required IconData option1Icon,
+    required IconData option2Icon,
+    required VoidCallback onOption1Tap,
+    required VoidCallback onOption2Tap,
+    required int selectedIndex, // 0 or 1
+  }) {
     showModalBottomSheet(
       context: context,
       backgroundColor: Colors.transparent,
@@ -56,19 +99,19 @@ class SettingsPage extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               children: [
                 Padding(
-                  padding: const EdgeInsets.all(16.0),
+                  padding: const EdgeInsets.only(top: 16, left: 16, right: 16, bottom: 5),
                   child: Row(
                     children: [
                       Text(
-                        strings(context).chooseTheme,
-                        style: TextStyle(
+                        title,
+                        style: const TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                      Spacer(),
+                      const Spacer(),
                       IconButton(
-                        icon: Icon(Icons.close),
+                        icon: const Icon(Icons.close),
                         onPressed: () => Navigator.pop(context),
                       ),
                     ],
@@ -76,36 +119,34 @@ class SettingsPage extends StatelessWidget {
                 ),
                 Divider(color: Theme.of(context).dividerColor),
                 ListTile(
-                  title: Text(strings(context).lightMode),
-                  leading: const Icon(Icons.light_mode),
-                  trailing:
-                      brightness == Brightness.light
-                          ? Icon(
-                            Icons.check_circle,
-                            color: AppColors.getCheckIconColor(context),
-                          )
-                          : null,
+                  title: Text(option1Text),
+                  leading: Icon(option1Icon),
+                  trailing: selectedIndex == 0
+                      ? Icon(
+                    Icons.check_circle,
+                    color: AppColors.getCheckIconColor(context),
+                  )
+                      : null,
                   onTap: () {
-                    onThemeChanged(ThemeMode.light);
+                    onOption1Tap();
                     Navigator.pop(context);
                   },
                 ),
                 ListTile(
-                  title: Text(strings(context).darkMode),
-                  leading: const Icon(Icons.dark_mode),
-                  trailing:
-                      brightness == Brightness.dark
-                          ? Icon(
-                            Icons.check_circle,
-                            color: AppColors.getCheckIconColor(context),
-                          )
-                          : null,
+                  title: Text(option2Text),
+                  leading: Icon(option2Icon),
+                  trailing: selectedIndex == 1
+                      ? Icon(
+                    Icons.check_circle,
+                    color: AppColors.getCheckIconColor(context),
+                  )
+                      : null,
                   onTap: () {
-                    onThemeChanged(ThemeMode.dark);
+                    onOption2Tap();
                     Navigator.pop(context);
                   },
                 ),
-                const SizedBox(height: 16),
+                const SizedBox(height: 8),
               ],
             ),
           ),
@@ -114,6 +155,7 @@ class SettingsPage extends StatelessWidget {
     );
   }
 
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -121,7 +163,8 @@ class SettingsPage extends StatelessWidget {
       body: SettingsList(
         sections: [
           SettingsSection(
-            title: Text(strings(context).appTheme, style: AppStyles.mediumText),
+            // margin: EdgeInsetsDirectional.only(start: 18, end: 18, top: 7, bottom: 7),
+            title: Text(strings(context).appSettings, style: AppStyles.mediumText),
             tiles: [
               SettingsTile(
                 leading: const Icon(Icons.brightness_4),
@@ -130,12 +173,25 @@ class SettingsPage extends StatelessWidget {
                   brightness == Brightness.dark
                       ? strings(context).darkMode
                       : strings(context).lightMode,
+                  style: AppStyles.settingsValue,
                 ),
                 onPressed: (context) => _showThemeBottomSheet(context),
+              ),
+              SettingsTile(
+                leading: Icon(Icons.language),
+                title: Text(strings(context).language),
+                value: Text(
+                  language == 'ko'
+                      ? strings(context).korean
+                      : strings(context).english,
+                  style: AppStyles.settingsValue,
+                ),
+                onPressed: (context) => _showLanguageBottomSheet(context),
               ),
             ],
           ),
           SettingsSection(
+            // margin: EdgeInsetsDirectional.only(start: 18, end: 18, top: 7, bottom: 7),
             title: Text(strings(context).info, style: AppStyles.mediumText),
             tiles: [
               SettingsTile(

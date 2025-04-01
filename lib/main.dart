@@ -17,10 +17,17 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   ThemeMode _themeMode = ThemeMode.system;
+  String _language = 'ko';
 
   void updateThemeMode(ThemeMode mode) {
     setState(() {
       _themeMode = mode;
+    });
+  }
+
+  void updateLanguage(String lang) {
+    setState(() {
+      _language = lang;
     });
   }
 
@@ -32,7 +39,7 @@ class _MyAppState extends State<MyApp> {
       themeMode: _themeMode,
       theme: AppTheme.buildTheme(Brightness.light),
       darkTheme: AppTheme.buildTheme(Brightness.dark),
-      locale: const Locale('ko'),
+      locale: Locale(_language),
       localizationsDelegates: [
         AppLocalizations.delegate,
         GlobalMaterialLocalizations.delegate,
@@ -43,7 +50,7 @@ class _MyAppState extends State<MyApp> {
         Locale('ko'), // Korean
         Locale('en'), // English
       ],
-      home: HomePage(updateThemeMode: updateThemeMode),
+      home: HomePage(updateThemeMode: updateThemeMode, updateLanguage: updateLanguage),
     );
   }
 }

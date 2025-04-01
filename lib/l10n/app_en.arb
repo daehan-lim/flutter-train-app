@@ -20,12 +20,16 @@
   "emailSendFail": "Cannot open email app or browser.",
   "devEmail": "penjan.eng@gmail.com",
   "chooseTheme": "Choose Theme",
-  "appTheme": "App Theme",
+  "appSettings": "App Settings",
   "themeMode": "Theme Mode",
   "info": "Information",
   "contactDev": "Contact Developer",
   "settings": "Settings",
   "korailBook": "Korail Reservation",
   "version": "Version",
-  "versionCode": "1.0.0"
+  "versionCode": "1.0.0",
+  "language": "Language",
+  "english": "English",
+  "korean": "Korean",
+  "chooseLanguage": "Choose Language"
 }

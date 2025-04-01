@@ -35,6 +35,10 @@ class AppStyles {
     fontWeight: FontWeight.bold
   );
 
+  static const settingsValue = TextStyle(
+    fontSize: 15
+  );
+
   static getSelectedStationText(BuildContext context) {
     return TextStyle(
       fontSize: 40,

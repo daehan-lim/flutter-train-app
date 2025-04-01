@@ -8,16 +8,19 @@ import '../util/util.dart';
 
 class AppMenu extends StatelessWidget {
   final void Function(ThemeMode _) updateThemeMode;
+  final void Function(String lang) updateLanguage;
 
-  const AppMenu({required this.updateThemeMode, super.key});
+  const AppMenu({
+    required this.updateThemeMode,
+    required this.updateLanguage,
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
     return PopupMenuButton<String>(
       color: AppColors.getMenuBackgroundColor(context),
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(16),
-      ),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
       elevation: 10,
       onSelected: (value) {
         if (value == 'settings') {
@@ -26,9 +29,11 @@ class AppMenu extends StatelessWidget {
             MaterialPageRoute(
               builder:
                   (context) => SettingsPage(
-                brightness: Theme.of(context).brightness,
-                onThemeChanged: updateThemeMode,
-              ),
+                    brightness: Theme.of(context).brightness,
+                    onThemeChanged: updateThemeMode,
+                    language: Localizations.localeOf(context).languageCode,
+                    onLanguageChanged: updateLanguage,
+                  ),
             ),
           );
         }
@@ -40,24 +45,24 @@ class AppMenu extends StatelessWidget {
       ),
       itemBuilder:
           (BuildContext context) => [
-        buildMenuItem(
-          value: 'webview',
-          label: strings(context).korailBook,
-          icon: Icons.web,
-        ),
-        // PopupMenuDivider(),
-        // buildMenuItem(
-        //   value: 'website',
-        //   label: '웹사이트 열기',
-        //   icon: Icons.public,
-        // ),
-        // PopupMenuDivider(),
-        buildMenuItem(
-          value: 'settings',
-          label: strings(context).settings,
-          icon: Icons.settings,
-        ),
-      ],
+            buildMenuItem(
+              value: 'webview',
+              label: strings(context).korailBook,
+              icon: Icons.web,
+            ),
+            // PopupMenuDivider(),
+            // buildMenuItem(
+            //   value: 'website',
+            //   label: '웹사이트 열기',
+            //   icon: Icons.public,
+            // ),
+            // PopupMenuDivider(),
+            buildMenuItem(
+              value: 'settings',
+              label: strings(context).settings,
+              icon: Icons.settings,
+            ),
+          ],
     );
   }
 
