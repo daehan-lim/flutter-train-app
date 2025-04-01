@@ -3,9 +3,17 @@ import 'package:flutter_train_app/app/constants/app_constants.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
 import '../../util/util.dart';
+import '../../widgets/app_menu.dart';
 
 class KorailPage extends StatelessWidget {
-  const KorailPage({super.key});
+  final void Function(ThemeMode _) updateThemeMode;
+  final void Function(String lang) updateLanguage;
+
+  const KorailPage({
+    super.key,
+    required this.updateThemeMode,
+    required this.updateLanguage,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +45,16 @@ class KorailPage extends StatelessWidget {
             ),
           );
     return Scaffold(
-      appBar: AppBar(title: Text(strings(context).korailBook)),
+      appBar: AppBar(
+        title: Text(strings(context).korailBook),
+        actions: [
+          AppMenu(
+            updateThemeMode: updateThemeMode,
+            updateLanguage: updateLanguage,
+            isWebViewOpened: true,
+          ),
+        ],
+      ),
       body: WebViewWidget(controller: controller),
     );
   }

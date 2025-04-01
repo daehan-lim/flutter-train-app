@@ -31,5 +31,6 @@
   "language": "언어",
   "english": "영어",
   "korean": "한국어",
-  "chooseLanguage": "언어 선택"
+  "chooseLanguage": "언어 선택",
+  "openWebsite": "브라우저에서 열기"
 }
