@@ -161,6 +161,7 @@ class SettingsPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(title: Text(strings(context).settings)),
       body: SettingsList(
+        platform: DevicePlatform.iOS,
         sections: [
           SettingsSection(
             // margin: EdgeInsetsDirectional.only(start: 18, end: 18, top: 7, bottom: 7),
