@@ -55,7 +55,7 @@ git clone https://github.com/daehan-lim/flutter-train-app.git
 cd flutter_train_app  
 ```
 
-3. 필요한 [패키지를](#필요한 패키지) 설치하면서 코드 생성도 같이 실행합니다(다국어 지원을 위한 필수 단계):
+3. 필요한 [패키지를](#-필요한-패키지) 설치하면서 코드 생성도 같이 실행합니다(다국어 지원을 위한 필수 단계):
 
 ```
 flutter pub get  
