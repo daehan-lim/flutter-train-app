@@ -21,4 +21,5 @@ class AppConstants {
   static const colLetters = ['A', 'B', 'C', 'D'];
 
   static const korailUrl = 'https://www.korail.com/';
+  static const korailEnglishUrl = 'https://www.korail.com/global/eng/intro/';
 }
