@@ -6,19 +6,28 @@
 
 ## 📋 목차
 
-- [📸 스크린샷](#스크린샷)
-- [🎯 주요 기능](#주요-기능)
-- [📥 설치 방법](#설치-방법)
-- [📚 필요한 패키지](#필요한-패키지)
-- [🚆 애플리케이션 사용법](#애플리케이션-사용법)
-- [🛠️ 프로젝트 구조](#프로젝트-구조)
-- [📊 테스트 및 CI/CD](#테스트-및-cicd)
-- [💡 기술적 특징](#기술적-특징)
-- [📄 라이센스](#라이센스)
+- [📸 스크린샷](#-스크린샷)
+- [🎯 주요 기능](#-주요-기능)
+- [📥 설치 방법](#-설치-방법)
+- [📚 필요한 패키지](#-필요한-패키지)
+- [🚆 애플리케이션 사용법](#-애플리케이션-사용법)
+- [🛠️ 프로젝트 구조](#-프로젝트-구조)
+- [📊 테스트 및 CI/CD](#-테스트-및-cicd)
+- [💡 기술적 특징](#-기술적-특징)
+- [📄 라이센스](#-라이센스)
 
 ## 📸 스크린샷
 
-<div style="display: flex; overflow-x: auto; border: 2px solid #ccc; padding: 6px; border-radius: 8px;"> <img src="images/login.png" width="240" style="margin-right: 5px;" /> <img src="images/signup.png" width="240" style="margin-right: 5px;" /> <img src="images/dashboard.png" width="240" style="margin-right: 5px;" /> <img src="images/ticket_details.png" width="240" style="margin-right: 5px;" /> <img src="images/edit.png" width="240" style="margin-right: 5px;" /> <img src="images/calendar.png" width="240" style="margin-right: 5px;" /> <img src="images/calendar_sync.png" width="240" style="margin-right: 5px;" /> <img src="images/maps.png" width="240" /> </div>
+<div style="display: flex; overflow-x: auto; border: 2px solid #ccc; padding: 6px; border-radius: 8px;">
+  <img src="images/1.png" width="393" style="margin-right: 5px;" />
+  <img src="images/2.png" width="393" style="margin-right: 5px;" />
+  <img src="images/3.png" width="393" style="margin-right: 5px;" />
+  <img src="images/4.png" width="393" style="margin-right: 5px;" />
+  <img src="images/6.png" width="393" style="margin-right: 5px;" />
+  <img src="images/7.png" width="393" style="margin-right: 5px;" />
+  <img src="images/8.png" width="393" style="margin-right: 5px;" />
+  <img src="images/9.png" width="393" />
+</div>
 
 ## 🎯 주요 기능
 
