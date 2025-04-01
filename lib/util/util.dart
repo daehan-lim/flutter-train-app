@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../app/constants/app_strings.dart';
 
@@ -48,4 +49,8 @@ void showAppSnackBar(BuildContext context, String message) {
       duration: Duration(seconds: 4),
     ),
   );
+}
+
+AppLocalizations strings(BuildContext context){
+ return AppLocalizations.of(context)!;
 }
