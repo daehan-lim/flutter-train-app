@@ -23,7 +23,7 @@ class AppColors {
 
   static Color getSeatBoxUnselected(BuildContext context) {
     return AppTheme.isDark(context)
-        ? Color(0xFF5F6161) // Colors.grey[300]
+        ? Color(0xFF5F6161)
         : Color(0xFFE0E0E0); // Colors.grey[300]
   }
 
