@@ -76,17 +76,24 @@ class _HomePageState extends State<HomePage> {
     final String? selectedStation =
         isDeparture ? _departureStation : _arrivalStation;
 
-    return GestureDetector(
-      onTap: () => _selectStation(isDeparture: isDeparture),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Text(title, style: AppStyles.arrivalDepartureText),
-          Text(
-            selectedStation ?? strings(context).select,
-            style: AppStyles.getSelectedStationText(context),
+    return Material(
+      child: InkWell(
+        highlightColor: Colors.grey.withValues(alpha: 0.3),
+        // splashColor: Colors.grey.withValues(alpha: 0.4),
+        onTap: () => _selectStation(isDeparture: isDeparture),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 30),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(title, style: AppStyles.arrivalDepartureText),
+              Text(
+                selectedStation ?? strings(context).select,
+                style: AppStyles.getSelectedStationText(context),
+              ),
+            ],
           ),
-        ],
+        ),
       ),
     );
   }
