@@ -63,3 +63,48 @@ class _MyAppState extends State<MyApp> {
     );
   }
 }
+
+/*
+void main() {
+  runApp(
+    const ProviderScope(
+      child: MyApp(),
+    ),
+  );
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Consumer(
+      builder: (context, ref, child) {
+        final settings = ref.watch(settingsProvider);
+
+        return MaterialApp(
+          title: 'Train Tickets',
+          debugShowCheckedModeBanner: false,
+          themeMode: settings.themeMode,
+          theme: AppTheme.buildTheme(Brightness.light),
+          darkTheme: AppTheme.buildTheme(Brightness.dark),
+          locale: Locale(settings.language),
+          localizationsDelegates: [
+            AppLocalizations.delegate,
+            GlobalMaterialLocalizations.delegate,
+            GlobalWidgetsLocalizations.delegate,
+            GlobalCupertinoLocalizations.delegate,
+          ],
+          supportedLocales: const [
+            Locale('ko'),
+            Locale('en'),
+          ],
+          home: child, // uses prebuilt child
+        );
+      },
+      child: const HomePage(), // avoids rebuilding this
+    );
+  }
+}
+
+ */
