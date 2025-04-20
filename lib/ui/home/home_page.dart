@@ -81,8 +81,8 @@ class _HomePageState extends State<HomePage> {
         highlightColor: Colors.grey.withValues(alpha: 0.3),
         // splashColor: Colors.grey.withValues(alpha: 0.4),
         onTap: () => _selectStation(isDeparture: isDeparture),
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 30),
+        child: SizedBox(
+          width: 150,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
